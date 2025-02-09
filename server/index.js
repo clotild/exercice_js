@@ -1,10 +1,6 @@
-const https = require("https");
+const http = require("http");
+const { mainCtrl } = require("./controllers");
 
-https.get(
-  "https://raw.githubusercontent.com/torvalds/linux/refs/heads/master/MAINTAINERS",
-  (res) => {
-    res.on("data", (data) => {
-      console.log(data + "");
-    });
-  }
-);
+const server = http.createServer(mainCtrl);
+
+server.listen(8080);
